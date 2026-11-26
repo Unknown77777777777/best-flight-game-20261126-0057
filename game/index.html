@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SORTIE — Arcade Flight Game</title>
+<style>
+  html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #1a1230; font-family: Arial, sans-serif; }
+  #gl, #hud { position: absolute; left: 0; top: 0; width: 100%; height: 100%; display: block; }
+  #hud { pointer-events: none; z-index: 2; }
+  #menu { position: absolute; z-index: 5; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: 560px; max-width: 92vw; background: rgba(10, 8, 28, 0.88); border: 2px solid #ffc44d;
+    border-radius: 12px; padding: 28px 32px; color: #f4f1e8; text-align: center; }
+  #menu h1 { margin: 0 0 4px; font-size: 52px; letter-spacing: 10px; color: #ffc44d; }
+  #menu h2 { margin: 0 0 18px; font-size: 15px; font-weight: normal; color: #7dff9a; letter-spacing: 2px; }
+  #missionList button { display: block; width: 100%; margin: 8px 0; padding: 12px; font-size: 17px; font-weight: bold;
+    background: #241a4a; color: #f4f1e8; border: 2px solid #5a4a8a; border-radius: 8px; cursor: pointer; }
+  #missionList button.active { border-color: #ffd21f; background: #3a2a6a; }
+  #brief { margin: 14px 0; font-size: 15px; line-height: 1.5; color: #d8d2c2; min-height: 44px; }
+  #startBtn { padding: 14px 42px; font-size: 20px; font-weight: bold; background: #ffc44d; color: #1a1230;
+    border: none; border-radius: 8px; cursor: pointer; }
+  #startBtn:hover { background: #ffd21f; }
+  #controls { margin-top: 16px; font-size: 12px; color: #9a94a8; line-height: 1.6; }
+  #result { position: absolute; z-index: 5; left: 50%; top: 38%; transform: translate(-50%, -50%); display: none;
+    background: rgba(10, 8, 28, 0.9); border: 2px solid #7dff9a; border-radius: 12px; padding: 22px 30px;
+    color: #f4f1e8; text-align: center; max-width: 90vw; }
+  #resultText { font-size: 22px; font-weight: bold; margin: 0 0 14px; }
+  #retryBtn { padding: 10px 28px; font-size: 16px; font-weight: bold; background: #7dff9a; color: #1a1230;
+    border: none; border-radius: 8px; cursor: pointer; }
+</style>
+</head>
+<body>
+<canvas id="gl"></canvas>
+<canvas id="hud"></canvas>
+<div id="menu">
+  <h1>SORTIE</h1>
+  <h2>ARCADE FLIGHT · ONE ISLAND · THREE MISSIONS</h2>
+  <div id="missionList">
+    <button data-mission="0" class="active">1 · DELIVERY RUN — land on runway 27</button>
+    <button data-mission="1">2 · RING RACE — 8 rings in 90 seconds</button>
+    <button data-mission="2">3 · LOW-LEVEL RECON — scan 3 zones under 150 m</button>
+  </div>
+  <p id="brief"></p>
+  <button id="startBtn">START FLYING</button>
+  <p id="controls">W/S throttle · A/D roll · ↑/↓ pitch · Q/E yaw · SHIFT boost · F flap · G gear<br>
+  SPACE brake · C camera · R respawn · M mission · click canvas for mouse free-look</p>
+</div>
+<div id="result">
+  <p id="resultText"></p>
+  <button id="retryBtn">FLY AGAIN (R)</button>
+</div>
+<script src="vendor/three.min.js"></script>
+<script src="src/config.js"></script>
+<script src="src/random.js"></script>
+<script src="src/input.js"></script>
+<script src="src/aircraft.js"></script>
+<script src="src/terrain.js"></script>
+<script src="src/sky.js"></script>
+<script src="src/hud.js"></script>
+<script src="src/missions.js"></script>
+<script src="src/camera.js"></script>
+<script src="src/audio.js"></script>
+<script src="src/shots.js"></script>
+<script src="src/main.js"></script>
+</body>
+</html>
